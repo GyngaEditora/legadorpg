@@ -1,0 +1,304 @@
+{
+	"Actor": {
+		"types": ["Jogador"],
+		"templates": {
+			"base": {
+				"casta": "Nenhuma",
+				"ascendencia": "Vazio",
+				"linhagem": "Vazio",
+				"condicoes": "",
+				"bio": "",
+				"nivel": 0,
+				"rodaVida": {
+					"alto": "",
+					"meio1": "",
+					"meio2": "",
+					"base": ""
+				},
+				"primarios": {
+					"fisicos": {
+						"forca": {
+							"valor": 2,
+							"facil": 0,
+							"normal": 0,
+							"dificil": 0,
+							"extremo": 0
+						},
+						"destreza": {
+							"valor": 2,
+							"facil": 0,
+							"normal": 0,
+							"dificil": 0,
+							"extremo": 0
+						},
+						"agilidade": {
+							"valor": 2,
+							"facil": 0,
+							"normal": 0,
+							"dificil": 0,
+							"extremo": 0
+						},
+						"constituicao": {
+							"valor": 2,
+							"facil": 0,
+							"normal": 0,
+							"dificil": 0,
+							"extremo": 0
+						}
+					},
+					"mentais": {
+						"inteligencia": {
+							"valor": 2,
+							"facil": 0,
+							"normal": 0,
+							"dificil": 0,
+							"extremo": 0
+						},
+						"astucia": {
+							"valor": 2,
+							"facil": 0,
+							"normal": 0,
+							"dificil": 0,
+							"extremo": 0
+						},
+						"vontade": {
+							"valor": 2,
+							"facil": 0,
+							"normal": 0,
+							"dificil": 0,
+							"extremo": 0
+						},
+						"carisma": {
+							"valor": 2,
+							"facil": 0,
+							"normal": 0,
+							"dificil": 0,
+							"extremo": 0
+						}
+					}
+				},
+				"secundarios": {
+					"dano": 0,
+					"ataque": 0,
+					"defesa": 0,
+					"conjuracao": 0,
+					"vida": 0,
+					"chama": 0,
+					"espirito_total": 0,
+					"espirito_atual": 0,
+					"alma": 5,
+					"desgaste": 0,
+					"esperanca_total": 0,
+					"esperanca_atual": 0,
+					"destino": 0
+				},
+				"pericias": {
+					"acrobatismo": {
+						"valor": 0,
+						"bonus": 0,
+						"attr": "AGI"
+					},
+					"artimanha": {
+						"valor": 0,
+						"bonus": 0,
+						"attr": "DES"
+					},
+					"arcanismo": {
+						"valor": 0,
+						"bonus": 0,
+						"attr": "INT"
+					},
+					"atletismo": {
+						"valor": 0,
+						"bonus": 0,
+						"attr": "FOR"
+					},
+					"ciencias": {
+						"valor": 0,
+						"bonus": 0,
+						"attr": "INT"
+					},
+					"computacao": {
+						"valor": 0,
+						"bonus": 0,
+						"attr": "INT"
+					},
+					"conducao": {
+						"valor": 0,
+						"bonus": 0,
+						"attr": "AGI"
+					},
+					"cosmologia": {
+						"valor": 0,
+						"bonus": 0,
+						"attr": "INT"
+					},
+					"cultura": {
+						"valor": 0,
+						"bonus": 0,
+						"attr": "INT"
+					},
+					"determinacao": {
+						"valor": 0,
+						"bonus": 0,
+						"attr": "VON"
+					},
+					"dissimulacao": {
+						"valor": 0,
+						"bonus": 0,
+						"attr": "CAR"
+					},
+					"engenharias": {
+						"valor": 0,
+						"bonus": 0,
+						"attr": "INT"
+					},
+					"empatia": {
+						"valor": 0,
+						"bonus": 0,
+						"attr": "CAR"
+					},
+					"furtividade": {
+						"valor": 0,
+						"bonus": 0,
+						"attr": "AGI"
+					},
+					"intimidacao": {
+						"valor": 0,
+						"bonus": 0,
+						"attr": "VON"
+					},
+					"investigacao": {
+						"valor": 0,
+						"bonus": 0,
+						"attr": "AST"
+					},
+					"manha": {
+						"valor": 0,
+						"bonus": 0,
+						"attr": "AST"
+					},
+					"medicina": {
+						"valor": 0,
+						"bonus": 0,
+						"attr": "INT"
+					},
+					"percepcao": {
+						"valor": 0,
+						"bonus": 0,
+						"attr": "AST"
+					},
+					"persuasao": {
+						"valor": 0,
+						"bonus": 0,
+						"attr": "CAR"
+					},
+					"profissao": {
+						"valor": 0,
+						"bonus": 0,
+						"attr": "INT"
+					},
+					"resistencia": {
+						"valor": 0,
+						"bonus": 0,
+						"attr": "AGI"
+					},
+					"sobrevivencia": {
+						"valor": 0,
+						"bonus": 0,
+						"attr": "AGI"
+					}
+				}
+			}
+		},
+		"Jogador": {
+			"templates": ["base"]
+		}
+	},
+	"Item": {
+		"types": ["ancestralidade", "arma", "armadura", "casta", "item", "pericia", "vantagem", "desvantagem", "poder", "magia"],
+		"templates": {
+			"base": {
+				"descricao": "",
+				"resumo": ""
+			}
+		},
+		"ancestralidade": {
+			"templates": ["base"],
+			"bonus": {
+				"vida": 0,
+				"espirito": 0,
+				"forca": 0,
+				"destreza": 0,
+				"agilidade": 0,
+				"constituicao": 0,
+				"inteligencia": 0,
+				"astucia": 0,
+				"vontade": 0,
+				"carisma": 0
+			}
+		},
+		"arma": {
+			"templates": ["base"],
+			"dano": 0
+		},
+		"armadura": {
+			"templates": ["base"],
+			"protecao": 0
+		},
+		"casta": {
+			"templates": ["base"],
+			"heranca": "",
+			"bonus" : {
+				"vida": 0,
+				"espirito": 0,
+				"ataque": 0,
+				"defesa": 0,
+				"conjuracao": 0
+			},
+			"nivel": {
+				"vida": 0,
+				"espirito": 0
+			}
+		},
+		"item": {
+			"templates": ["base"]
+		},
+		"vantagem": {
+			"templates": ["base"],
+			"custo": 1,
+			"casta": "todas"
+		},
+		"desvantagem": {
+			"templates": ["base"],
+			"bonus": 1
+		},
+		"poder": {
+			"templates": ["base"],
+			"heranca": "",
+			"nivel": "",
+			"acao": "",
+			"alcance": "",
+			"alvo": "",
+			"custo": "",
+			"duracao": "",
+			"salvacao": ""
+		},
+		"magia": {
+			"templates": ["base"],
+			"disciplina": "",
+			"escola": "",
+			"nivel": 1,
+			"custo": "",
+			"alcance": "",
+			"duracao": "",
+			"alvo": "",
+			"area": "",
+			"dano": "",
+			"dano-continuo": "",
+			"peso": "",
+			"velocidade": "",
+			"alteracoes": ""
+		}
+	}
+}

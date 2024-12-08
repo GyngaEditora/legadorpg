@@ -1,0 +1,27 @@
+<div class="shotgunDiaries chat-item message-content">
+	<div>Rolando com {{FEAR}} de MEDO</div>
+	<div class="dice-roll">
+		<div class="dice-result">
+			<div class="dice-formula">{{formulae}}</div>
+			<div class="dice-tooltip">
+				<section class="tooltip-part">
+					<div class="dice">
+						<header class="part-header flexrow">
+							<span class="part-formula">{{formulae}}</span>
+						</header>
+						<ol class="dice-rolls">
+							{{#each pureDices as |pd|}}
+								<li class="roll die d6">{{pd.result}}</li>
+							{{/each}}
+							{{#each fearDices as |fd|}}
+								<li class="roll die d6" style="background:#c00000; color:#fff;">{{fd.result}}</li>
+							{{/each}}
+						</ol>
+					</div>
+				</section>
+			</div>
+			<h4 class="dice-total">Sucesso Puro: {{pureSuccesses}}</h4>
+			<h4 class="dice-total">Sucesso Corrompido: {{fearSuccesses}}</h4>
+		</div>
+	</div>
+</div>

@@ -1,0 +1,147 @@
+<form class="{{cssClass}}" autocomplete="off">
+    <header class="sheet-header">
+        <img class="profile-img" src="{{item.img}}" data-edit="img" title="{{item.name}}"/>
+        <div class="header-fields">
+            <h1 class="charname"><input name="name" type="text" value="{{item.name}}" placeholder="Name"/></h1>
+        </div>
+    </header>
+
+    {{!-- Sheet Tab Navigation --}}
+    <nav class="sheet-tabs tabs" data-group="primary">
+        <a class="item" data-tab="description">Description</a>
+        <a class="item" data-tab="atributos">Atributos</a>
+    </nav>
+
+    {{!-- Sheet Body --}}
+    <section class="sheet-body">
+
+        {{!-- Description Tab --}}
+        <div class="tab" data-group="primary" data-tab="description">
+			<div>
+				<table>
+					<tr>
+						<td>Resumo</td>
+						<td>
+							<input type="text" name="system.resume" value="{{item.system.resume}}" />
+						</td>
+					</tr>
+				</table>
+			</div>
+            <div>
+				<label>Descrição</label>
+				<div class="item-description">
+					{{editor descricao target="system.descricao" button=true editable=editable}}	
+				</div>
+			</div>
+        </div>
+		
+        {{!-- Atributos Tab --}}
+        <div class="tab" data-group="primary" data-tab="atributos">
+			<div>
+				<table>
+					<tr>
+						<td>Circulo</td>
+						<td>
+							<input type="text" name="system.nivel" value="{{item.system.nivel}}" />
+						</td>
+					</tr>
+					<tr>
+						<td>Custo</td>
+						<td>
+							<input type="text" name="system.custo" value="{{item.system.custo}}" />
+						</td>
+					</tr>
+					<tr>
+						<td>Disciplina</td>
+						<td>
+							<select name="system.disciplina">
+								{{#select item.system.disciplina}}
+									<option value="Água">Água</option>
+									<option value="Ar">Ar</option>
+									<option value="Corpo">Corpo</option>
+									<option value="Espírito">Espírito</option>
+									<option value="Fogo">Fogo</option>
+									<option value="Luz">Luz</option>
+									<option value="Realidade">Realidade</option>
+									<option value="Sombras">Sombras</option>
+									<option value="Terra">Terra</option>
+								{{/select}}
+							</select>
+						</td>
+					</tr>
+					<tr>
+						<td>Escola</td>
+						<td>
+							<select name="system.escola">
+								{{#select item.system.escola}}
+									<option value="Abjuração">Abjuração</option>
+									<option value="Advinhação">Advinhação</option>
+									<option value="Conjuração">Conjuração</option>
+									<option value="Encantamento">Encantamento</option>
+									<option value="Evocação">Evocação</option>
+									<option value="Ilusão">Ilusão</option>
+									<option value="Necromancia">Necromancia</option>
+									<option value="Transmutação">Transmutação</option>
+								{{/select}}
+							</select>
+						</td>
+					</tr>
+					<tr>
+						<td>Tempo de conjuração</td>
+						<td>
+							<input type="text" name="system.tempo" value="{{item.system.tempo}}" />
+						</td>
+					</tr>
+					<tr>
+						<td>Alcance</td>
+						<td>
+							<input type="text" name="system.alcance" value="{{item.system.alcance}}" />
+						</td>
+					</tr>
+					<tr>
+						<td>Duração</td>
+						<td>
+							<input type="text" name="system.duracao" value="{{item.system.duracao}}" />
+						</td>
+					</tr>
+					<tr>
+						<td>Alvo</td>
+						<td>
+							<input type="text" name="system.alvo" value="{{item.system.alvo}}" />
+						</td>
+					</tr>
+					<tr>
+						<td>Área</td>
+						<td>
+							<input type="text" name="system.area" value="{{item.system.area}}" />
+						</td>
+					</tr>
+					<tr>
+						<td>Dano/Cura(se houver)</td>
+						<td>
+							<input type="text" name="system.dano" value="{{item.system.dano}}" />
+						</td>
+					</tr>
+					<tr>
+						<td>Dano Contínuo</td>
+						<td>
+							<input type="text" name="system.dano-continuo" value="{{item.system.dano-continuo}}" />
+						</td>
+					</tr>
+					<tr>
+						<td>Peso</td>
+						<td>
+							<input type="text" name="system.peso" value="{{item.system.peso}}" />
+						</td>
+					</tr>
+					<tr>
+						<td>Velocidade</td>
+						<td>
+							<input type="text" name="system.velocidade" value="{{item.system.velocidade}}" />
+						</td>
+					</tr>
+				</table>
+			</div>
+        </div>
+    </section>
+</form>

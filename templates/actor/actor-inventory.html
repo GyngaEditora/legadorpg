@@ -1,0 +1,62 @@
+			<div class="item-controls">
+				<button class="item-control item-create" title='item' data-type="equipment">
+					<i class="fas fa-plus"></i>
+				</button>
+			</div>
+			<div>
+				<label class="">Misc</label>
+				<ol class="items-list">
+					{{#each actor.items as |item id|}}
+						{{#if (eqs item.type "item")}}
+							<li class="item flexrow" data-item-id="{{item._id}}" draggable="true">
+								{{!-- <img src="{{item.img}}" title="{{item.name}}" width="24" height="24"/> --}}
+								<h4 class="item-name"><span class="rollable item-rollable" data-roll=""><i class="fas fa-comment-alt"></i></span><span class="item-label">{{item.name}}<span class="item-details-toggle"><i class="fas fa-chevron-down"></i></span></span></h4>
+								<div class="item-controls">
+									<a class="item-control item-edit" title="Edit Item"><i class="fas fa-edit"></i></a>
+									<a class="item-control item-delete" title="Delete Item"><i class="fas fa-trash"></i></a>
+								</div>
+							</li>
+						{{/if}}
+					{{/each}}
+				</ol>
+			</div>
+			<div>
+				<label class="">Armas</label>
+				<ol class="weapons-list">
+					{{#each actor.items as |item id|}}
+						{{#if (eqs item.type "item")}}
+							<li class="item flexrow" data-item-id="{{item._id}}" draggable="true">
+								{{!-- <img src="{{item.img}}" title="{{item.name}}" width="24" height="24"/> --}}
+								<h4 class="item-name"><span class="rollable item-rollable" data-roll=""><i class="fas fa-comment-alt"></i></span><span class="item-label">{{item.name}}<span class="item-details-toggle"><i class="fas fa-chevron-down"></i></span></span></h4>
+
+								<div class="item-meta tags">
+								</div>
+								<div class="item-controls">
+									<a class="item-control item-edit" title="Edit Item"><i class="fas fa-edit"></i></a>
+									<a class="item-control item-delete" title="Delete Item"><i class="fas fa-trash"></i></a>
+								</div>
+							</li>
+						{{/if}}
+					{{/each}}
+				</ol>
+			</div>
+			<div>
+				<label class="">Armaduras</label>
+				<ol class="armor-list">
+					{{#each actor.items as |item id|}}
+						{{#if (eqs item.type "item")}}
+							<li class="item flexrow" data-item-id="{{item._id}}" draggable="true">
+								{{!-- <img src="{{item.img}}" title="{{item.name}}" width="24" height="24"/> --}}
+								<h4 class="item-name"><span class="rollable item-rollable" data-roll=""><i class="fas fa-comment-alt"></i></span><span class="item-label">{{item.name}}<span class="item-details-toggle"><i class="fas fa-chevron-down"></i></span></span></h4>
+
+								<div class="item-meta tags">
+								</div>
+								<div class="item-controls">
+									<a class="item-control item-edit" title="Edit Item"><i class="fas fa-edit"></i></a>
+									<a class="item-control item-delete" title="Delete Item"><i class="fas fa-trash"></i></a>
+								</div>
+							</li>
+						{{/if}}
+					{{/each}}
+				</ol>
+			</div>

@@ -1,0 +1,244 @@
+/* Global styles */
+.rollable:hover, .rollable:focus {
+  color: #000;
+  text-shadow: 0 0 10px #AA0000;
+  cursor: pointer;
+}
+
+.grid,
+.grid-2col {
+  display: grid;
+  grid-column: span 2 / span 2;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px;
+  margin: 10px 0;
+  padding: 0;
+}
+
+.grid-3col {
+  grid-column: span 3 / span 3;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.grid-4col {
+  grid-column: span 4 / span 4;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
+.grid-5col {
+  grid-column: span 5 / span 5;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+}
+
+.grid-6col {
+  grid-column: span 5 / span 5;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+}
+
+.grid-7col {
+  grid-column: span 7 / span 7;
+  grid-template-columns: repeat(7, minmax(0, 1fr));
+}
+
+.grid-8col {
+  grid-column: span 8 / span 8;
+  grid-template-columns: repeat(8, minmax(0, 1fr));
+}
+
+.grid-9col {
+  grid-column: span 9 / span 9;
+  grid-template-columns: repeat(9, minmax(0, 1fr));
+}
+
+.grid-10col {
+  grid-column: span 10 / span 10;
+  grid-template-columns: repeat(10, minmax(0, 1fr));
+}
+
+.grid-11col {
+  grid-column: span 11 / span 11;
+  grid-template-columns: repeat(11, minmax(0, 1fr));
+}
+
+.grid-12col {
+  grid-column: span 12 / span 12;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+}
+
+.flex-group-center,
+.flex-group-left,
+.flex-group-right {
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  text-align: center;
+  padding: 5px;
+  border: 1px solid #999;
+}
+
+.flex-group-left {
+  -webkit-box-pack: start;
+  -ms-flex-pack: start;
+  justify-content: flex-start;
+  text-align: left;
+}
+
+.flex-group-right {
+  -webkit-box-pack: end;
+  -ms-flex-pack: end;
+  justify-content: flex-end;
+  text-align: right;
+}
+
+.flex-center {
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.flex-between {
+  -webkit-box-pack: justify;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+}
+
+/* Styles limited to hwf sheets */
+
+.legadorpg header.sheet-header {
+  overflow: hidden;
+  display: -webkit-box;
+  display: block;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+  -webkit-box-pack: start;
+  padding-bottom: 10px;
+  margin-bottom: 10px;
+}
+
+.legadorpg .sheet-header .profile-img {
+  height: 100px;
+}
+
+.legadorpg .sheet-header .header-fields {
+}
+
+.legadorpg .sheet-header h1.charname {
+  height: 50px;
+  padding: 0px;
+  margin: 5px 0;
+  border-bottom: 0;
+}
+
+.legadorpg .sheet-header h1.charname input {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+}
+
+.legadorpg .sheet-header h2 {
+	border-bottom: none;
+}
+
+.legadorpg .mid{
+	padding-top: 5px;
+	padding-bottom: 5px;
+	border-bottom: 1px solid #999;
+}
+
+.legadorpg .mid .mid-table{
+	border: none;
+	margin: 0;
+	width: 100%;
+}
+
+.legadorpg .standard-actions{
+	height: 60px;
+	padding-top: 5px;
+	padding-bottom: 5px;
+	border-bottom: 1px solid #999;
+}
+
+.legadorpg .standard-actions .action{
+	font-size: 12px;
+	border: 1px solid #000;
+	padding: 5px;
+	margin-top: 5px;
+}
+
+.legadorpg .sheet-tabs {
+	border: none;
+}
+
+.legadorpg .sheet-body,
+.legadorpg .sheet-body .tab,
+.legadorpg .sheet-body .tab .editor {
+  height: 100%;
+}
+
+.legadorpg .tabs {
+  height: 40px;
+}
+
+.legadorpg .tabs .item {
+  font-weight: bold;
+  border-style: rounded;
+  border-top: 1px solid #AAA;
+  border-right: 1px solid #BBB;
+  border-left: 1px solid #BBB;
+}
+
+.legadorpg .tabs .item.active {
+  text-decoration: underline;
+  text-shadow: none;
+}
+
+.legadorpg .tabs a.item:hover {
+  text-shadow: 0 0 8px purple;
+}
+
+.legadorpg .legadorpgText {
+	display: inline;
+	width: 100%;
+}
+
+.legadorpg .item-description {
+	height: 512px;
+}
+
+.legadorpg .biography {
+	height: 512px;
+}
+
+.legadorpg .mce-div {
+	height: 256px;
+}
+
+.legadorpg .rodaDaVida {
+	padding-top: 5px;
+	padding-bottom: 5px;
+}
+
+.legadorpg .rodaDaVida table {
+	margin: 0;
+	border: none;
+}
+
+.legadorpg .rodaDaVida td {
+	padding: 0;
+}
+
+.legadorpg .recursosPrimarios {
+	padding-top: 5px;
+	padding-bottom: 5px;
+}
+
+.legadorpg .standardTable td{
+	text-align: center;
+}

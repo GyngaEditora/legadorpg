@@ -1,0 +1,23 @@
+	{
+  "name": "legadorpg",
+  "title": "Legado RPG",
+  "description": "Sistema onde você joga com poderes místicos herdados de seus ancestrais",
+  "version": "0.0.2",
+  "minimumCoreVersion": "0.11.0",
+  "compatibleCoreVersion": "0.8.0",
+  "templateVersion": 1,
+  "author": "Carolbernardino, Pehdrah",
+  "esmodules": ["module/legadorpg.js"],
+  "styles": ["css/legadorpg.css"],
+  "scripts": [],
+  "packs": [],
+  "languages": [],
+  "gridDistance": 3,
+  "gridUnits": "m",
+  "primaryTokenAttribute": "secundarios.chama",
+  "secondaryTokenAttribute": "secundarios.espirito_atual",
+  "url": "",
+  "manifest": "",
+  "download": "",
+  "license": "LICENSE.txt"
+}
