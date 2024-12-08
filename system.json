@@ -17,7 +17,7 @@
   "primaryTokenAttribute": "secundarios.chama",
   "secondaryTokenAttribute": "secundarios.espirito_atual",
   "url": "https://github.com/GyngaEditora/legadorpg",
-  "manifest": "",
+  "manifest": "https://raw.githubusercontent.com/GyngaEditora/legadorpg/refs/heads/main/system.json",
   "download": "",
   "license": "LICENSE.txt"
 }
