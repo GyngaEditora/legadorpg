@@ -280,7 +280,7 @@
 						</tr>
 						{{#each actor.system.pericias as |v attr|}}
 							<tr>
-								<td class="rollable roll-pericia" attr="pericias.{{attr}}">{{attr}}</td>
+								<td class="rollable roll-pericia" attr="{{attr}}">{{attr}}</td>
 								<td>{{v.attr}}</td>
 								<td><input style="width: 30px;" name="system.pericias.{{attr}}.valor" type="number" value="{{v.valor}}" /></td>
 								<td><input style="width: 30px;" name="system.pericias.{{attr}}.bonus" type="number" value="{{v.bonus}}" /></td>

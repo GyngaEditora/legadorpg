@@ -73,6 +73,39 @@ export class LegadoRPGActorSheet extends ActorSheet {
       });
     }
   }
+	async standardRoll(){
+		let roll = new Roll("1d100");
+		await roll.roll({"async": false});
+		
+		return roll;
+	}
+	
+	displayRoll(roll, label, fate, targets, messages){
+		let r = roll.dice[0].total;
+
+		if(fate){
+			if(r > 94){
+				label = label + "<div>Mermão, deu ruim</div>";
+			}
+		}
+		
+		if(r < targets[0]){
+			label = label + messages[0];
+		} else if (r < targets[1]) {
+			label = label + messages[1];
+		} else if (r < targets[2]) {
+			label = label + messages[2];
+		} else if (r < targets[3]) {
+			label = label + messages[3];
+		} else {
+			label = label + messages[4];
+		}
+		
+		roll.toMessage({
+			speaker: ChatMessage.getSpeaker({ actor: this.actor }),
+			flavor: label
+		});
+	}
    
    /**
 	* Handle clickable rolls.
@@ -80,14 +113,16 @@ export class LegadoRPGActorSheet extends ActorSheet {
 	* @private
 	*/
 	async _onRollAttr(event) {
+		event.preventDefault();
 		const element = event.currentTarget;
 		const dataset = element.dataset;
 		let attr = element.getAttribute("attr");
 	  
 		let confirmed = false;
+		let roll = await this.standardRoll();
 
 		new Dialog({
-			title: "1001 dados",
+			title: "Rolagem de Atributo",
 			content: `
 			 <form>
 			  <div>
@@ -125,37 +160,22 @@ export class LegadoRPGActorSheet extends ActorSheet {
 					let sec = html.find('[name=sec]')[0].value;
 					let attr1 = this.attrToActorAttr(attr, this.actor.system);
 					let attr2 = this.attrToActorAttr(sec, this.actor.system);
-					let roll = new Roll("1d100");
-					roll.roll({"async": false});
+					
 					let label = "Rolando " + this.attrToShort(attr) + "+" + this.attrToShort(sec);
-					
-					console.log(label);
-					
-					let r = roll.dice[0].total;
 					
 					let facil = attr1.facil + attr2.facil;
 					let normal = attr1.normal + attr2.normal;
 					let dificil = attr1.dificil + attr2.dificil;
 					let extremo = attr1.extremo + attr2.extremo;
-
-					if(r > 94){
-						label = label + "<div>Mermão, deu ruim</div>";
-					} else if(r < extremo){
-						label = label + "<div>Passou Extremo</div>";
-					} else if (r < dificil) {
-						label = label + "<div>Passou Difícil<</div>";
-					} else if (r < normal) {
-						label = label + "<div>Passou Normal<</div>";
-					} else if (r < facil) {
-						label = label + "<div>Passou Fácil<</div>";
-					} else {
-						label = label + "<div>Não Passou</div>";
-					}
-
-					roll.toMessage({
-						speaker: ChatMessage.getSpeaker(this.actor),
-						flavor: label
-					});
+					
+					this.displayRoll(roll, label, true, [extremo, dificil, normal, facil], [
+							"<div>Passou Extremo</div>",
+							"<div>Passou Difícil</div>",
+							"<div>Passou Normal</div>",
+							"<div>Passou Fácil</div>",
+							"<div>Não Passou</div>"
+						]
+					);
 				}
 			}
 		}).render(true);	  
@@ -169,146 +189,107 @@ export class LegadoRPGActorSheet extends ActorSheet {
 		let pid = element.getAttribute("attr");
 		let pname = element.innerHTML;
 
-		console.log(pid);
-		let p = this.attrToSkill(pid, this.actor.system);
-		console.log(p);
-
-		let formulae = "1d100";
-
-		let roll = new Roll(formulae);
-		roll.roll({"async": false});
+		let p = this.actor.system.pericias[pid];
+		
+		let roll = await this.standardRoll();
 		let label = "<div>Rolando " + pname + "</div>";
+						
+		this.displayRoll(roll,label, true, [p.extremo, p.dificil, p.normal, p.facil], [
+				"<div>Passou Extremo</div>",
+				"<div>Passou Difícil</div>",
+				"<div>Passou Normal</div>",
+				"<div>Passou Fácil</div>",
+				"<div>Não Passou</div>"
+			]
+		);
+	}
+  
+	async _onRollAtaque(event) {
+		event.preventDefault();
 
-		let r = roll.dice[0].total;
+		let roll = await this.standardRoll();
+
+		let label = "<div>Atacando!</div>";
+
+		extremo = this.actor.system.secundarios.ataque / 5);
+		dificil = this.actor.system.secundarios.ataque / 2);
+		normal = this.actor.system.secundarios.ataque);
+		facil = this.actor.system.secundarios.ataque * 2);
+						
+		this.displayRoll(roll,label, true, [extremo, dificil, normal, facil], [
+				"<div>QUE GOLPE LINDO!</div>",
+				"<div>Em Cheio!</div>",
+				"<div>Pegou!</div>",
+				"<div>NO VÁCUO!</div>",
+				"<div>NO VÁCUO!</div>"
+			]
+		);
+	}
+  
+	async _onRollDef(event) {
+		event.preventDefault();
 		
+		let roll = await this.standardRoll();
 		
-		if(r > 94){
-			label = label + "<div>Mermão, deu ruim</div>";
-		} else if(r < p.extremo){
-			label = label + "<div>Passou Extremo</div>";
-		} else if (r < p.dificil) {
-			label = label + "<div>Passou Difícil</div>";
-		} else if (r < p.normal) {
-			label = label + "<div>Passou Normal</div>";
-		} else if (r < p.facil) {
-			label = label + "<div>Passou Fácil</div>";
-		} else {
-			label = label + "<div>Não Passou</div>";
-		}
+		let label = "<div>Defendendo!</div>";
 
-		roll.toMessage({
-			speaker: ChatMessage.getSpeaker(this.actor),
-			flavor: label
-		});
+		extremo = this.actor.system.secundarios.defesa / 5);
+		dificil = this.actor.system.secundarios.defesa / 2);
+		normal = this.actor.system.secundarios.defesa);
+		facil = this.actor.system.secundarios.defesa * 2);
+						
+		this.displayRoll(roll,label, true, [extremo, dificil, normal, facil], [
+				"<div>DEFESA ÉÉÉÉÉÉÉPICAAAA! (def /5)</div>",
+				"<div>BLOQUEIO PERFEITO! (def/2)</div>",
+				"<div>Boa Guarda! (def)</div>",
+				"<div>Tem falha nessa postura</div>",
+				"<div>Tem falha nessa postura</div>"
+			]
+		);
 	}
   
-  _onRollAtaque(event) {
-    event.preventDefault();
-	
-	let formulae = "1d100";
+	async _onRollCast(event) {
+		event.preventDefault();
+		
+		let roll = await this.standardRoll();
+		
+		let label = "<div>Conjurando!</div>";
 
-	let roll = new Roll(formulae);
-	roll.roll({"async": false});
-	let label = "<div>Atacando!</div>";
-	
-	let r = roll.dice[0].total;
-	
-	if(r < this.actor.system.secundarios.ataque / 5){
-		label = label + "<div>QUE GOLPE LINDO!</div>";
-	} else if (r < this.actor.system.secundarios.ataque / 2) {
-		label = label + "<div>Em Cheio!</div>";
-	} else if (r < this.actor.system.secundarios.ataque) {
-		label = label + "<div>Pegou!</div>";
-	} else if (r < this.actor.system.secundarios.ataque * 2) {
-		label = label + "<div>Tirou um fino</div>";
-	} else {
-		label = label + "<div>NO VÁCUO!</div>";
+		extremo = this.actor.system.secundarios.conjuracao / 5);
+		dificil = this.actor.system.secundarios.conjuracao / 2);
+		normal = this.actor.system.secundarios.conjuracao);
+		facil = this.actor.system.secundarios.conjuracao * 2);
+						
+		this.displayRoll(roll, label, true, [extremo, dificil, normal, facil], [
+				"<div>QUE MAGIA LINDA!</div>",
+				"<div>Em Cheio!</div>",
+				"<div>Pegou!</div>",
+				"<div>NO VÁCUO!</div>",
+				"<div>NO VÁCUO!</div>"
+			]
+		);
 	}
-	
-	roll.toMessage({
-		speaker: ChatMessage.getSpeaker(this.actor),
-		flavor: label
-	});
-  }
   
-  _onRollDef(event) {
-    event.preventDefault();
-	
-	let formulae = "1d100";
-
-	let roll = new Roll(formulae);
-	roll.roll({"async": false});
-	let label = "<div>Defendendo!</div>";
-	
-	let r = roll.dice[0].total;
-	
-	if(r < this.actor.system.secundarios.defesa / 5){
-		label = label + "<div>DEFESA ÉÉÉÉÉÉÉPICAAAA!</div>";
-	} else if (r < this.actor.system.secundarios.defesa / 2) {
-		label = label + "<div>BLOQUEIO PERFEITO!</div>";
-	} else if (r < this.actor.system.secundarios.defesa) {
-		label = label + "<div>Boa Guarda!</div>";
-	} else if (r < this.actor.system.secundarios.defesa * 2) {
-		label = label + "<div>Por um triz</div>";
-	} else {
-		label = label + "<div>Essa doeu!</div>";
-	}
-	
-	roll.toMessage({
-		speaker: ChatMessage.getSpeaker(this.actor),
-		flavor: label
-	});
-  }
-  
-  _onRollCast(event) {
-    event.preventDefault();
-	
-	let formulae = "1d100";
-
-	let roll = new Roll(formulae);
-	roll.roll({"async": false});
-	let label = "<div>Conjurando!</div>";
-	
-	let r = roll.dice[0].total;
-	
-	if(r < this.actor.system.secundarios.conjuracao / 5){
-		label = label + "<div>QUE MAGIA LINDA!</div>";
-	} else if (r < this.actor.system.secundarios.conjuracao / 2) {
-		label = label + "<div>Em Cheio!</div>";
-	} else if (r < this.actor.system.secundarios.conjuracao) {
-		label = label + "<div>Pegou!</div>";
-	} else if (r < this.actor.system.secundarios.conjuracao * 2) {
-		label = label + "<div>Tirou um fino</div>";
-	} else {
-		label = label + "<div>NO VÁCUO!</div>";
-	}
-	
-	roll.toMessage({
-		speaker: ChatMessage.getSpeaker(this.actor),
-		flavor: label
-	});
-  }
-  
-  _onRollItem(event) {
-    event.preventDefault();
-	const element = event.currentTarget;
-	const dataset = element.dataset;
-	let damage = element.getAttribute("damage");
-	let source = element.innerHTML;
-	
-	if(damage != null){
-		if(damage != ""){
-			let roll = new Roll(damage);
-			roll.roll({"async": false});
-			let label = "<div>Dano de " + source + "</div>";
-			
-			roll.toMessage({
-				speaker: ChatMessage.getSpeaker(this.actor),
-				flavor: label
-			});
+	_onRollItem(event) {
+		event.preventDefault();
+		const element = event.currentTarget;
+		const dataset = element.dataset;
+		let damage = element.getAttribute("damage");
+		let source = element.innerHTML;
+		
+		if(damage != null){
+			if(damage != ""){
+				let roll = new Roll(damage);
+				roll.roll({"async": false});
+				let label = "<div>Dano de " + source + "</div>";
+				
+				roll.toMessage({
+					speaker: ChatMessage.getSpeaker(this.actor),
+					flavor: label
+				});
+			}
 		}
 	}
-  }
   
 	/**
 	* Handle creating a new Owned Item for the actor using initial data defined in the HTML dataset
@@ -487,36 +468,6 @@ export class LegadoRPGActorSheet extends ActorSheet {
 			"mentais.astucia": actorData.primarios.mentais.astucia,
 			"mentais.vontade": actorData.primarios.mentais.vontade,
 			"mentais.carisma": actorData.primarios.mentais.carisma
-		};
-		
-		return toValue[attr];
-	}
-
-	attrToSkill(attr, actorData){
-		let toValue = {
-			"pericias.acrobatismo": actorData.pericias.acrobatismo,
-			"pericias.artimanha": actorData.pericias.artimanha,
-			"pericias.arcanismo": actorData.pericias.arcanismo,
-			"pericias.atletismo": actorData.pericias.atletismo,
-			"pericias.ciencias": actorData.pericias.ciencias,
-			"pericias.computacao": actorData.pericias.computacao,
-			"pericias.conducao": actorData.pericias.conducao,
-			"pericias.cosmologia": actorData.pericias.cosmologia,
-			"pericias.cultura": actorData.pericias.cultura,
-			"pericias.determinacao": actorData.pericias.determinacao,
-			"pericias.dissimulacao": actorData.pericias.dissimulacao,
-			"pericias.engenharias": actorData.pericias.engenharias,
-			"pericias.empatia": actorData.pericias.empatia,
-			"pericias.furtividade": actorData.pericias.furtividade,
-			"pericias.intimidacao": actorData.pericias.intimidacao,
-			"pericias.investigacao": actorData.pericias.investigacao,
-			"pericias.manha": actorData.pericias.manha,
-			"pericias.medicina": actorData.pericias.medicina,
-			"pericias.percepcao": actorData.pericias.percepcao,
-			"pericias.persuasao": actorData.pericias.persuasao,
-			"pericias.profissao": actorData.pericias.profissao,
-			"pericias.resistencia": actorData.pericias.resistencia,
-			"pericias.sobrevivencia": actorData.pericias.sobrevivencia
 		};
 		
 		return toValue[attr];
