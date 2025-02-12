@@ -16,8 +16,8 @@
   "gridUnits": "m",
   "primaryTokenAttribute": "secundarios.chama",
   "secondaryTokenAttribute": "secundarios.espirito_atual",
-  "url": "",
-  "manifest": "",
-  "download": "",
+  "url": "https://github.com/GyngaEditora/legadorpg/",
+  "manifest": "https://github.com/GyngaEditora/legadorpg/releases/download/1.0-12/system.json",
+  "download": "https://github.com/GyngaEditora/legadorpg/archive/refs/tags/legadorpg-1.0-12.zip",
   "license": "LICENSE.txt"
 }

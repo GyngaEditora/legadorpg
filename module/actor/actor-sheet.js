@@ -211,10 +211,10 @@ export class LegadoRPGActorSheet extends ActorSheet {
 
 		let label = "<div>Atacando!</div>";
 
-		extremo = this.actor.system.secundarios.ataque / 5);
-		dificil = this.actor.system.secundarios.ataque / 2);
-		normal = this.actor.system.secundarios.ataque);
-		facil = this.actor.system.secundarios.ataque * 2);
+		extremo = this.actor.system.secundarios.ataque / 5;
+		dificil = this.actor.system.secundarios.ataque / 2;
+		normal = this.actor.system.secundarios.ataque;
+		facil = this.actor.system.secundarios.ataque * 2;
 						
 		this.displayRoll(roll,label, true, [extremo, dificil, normal, facil], [
 				"<div>QUE GOLPE LINDO!</div>",
@@ -233,10 +233,10 @@ export class LegadoRPGActorSheet extends ActorSheet {
 		
 		let label = "<div>Defendendo!</div>";
 
-		extremo = this.actor.system.secundarios.defesa / 5);
-		dificil = this.actor.system.secundarios.defesa / 2);
-		normal = this.actor.system.secundarios.defesa);
-		facil = this.actor.system.secundarios.defesa * 2);
+		extremo = this.actor.system.secundarios.defesa / 5;
+		dificil = this.actor.system.secundarios.defesa / 2;
+		normal = this.actor.system.secundarios.defesa;
+		facil = this.actor.system.secundarios.defesa * 2;
 						
 		this.displayRoll(roll,label, true, [extremo, dificil, normal, facil], [
 				"<div>DEFESA ÉÉÉÉÉÉÉPICAAAA! (def /5)</div>",
@@ -255,10 +255,10 @@ export class LegadoRPGActorSheet extends ActorSheet {
 		
 		let label = "<div>Conjurando!</div>";
 
-		extremo = this.actor.system.secundarios.conjuracao / 5);
-		dificil = this.actor.system.secundarios.conjuracao / 2);
-		normal = this.actor.system.secundarios.conjuracao);
-		facil = this.actor.system.secundarios.conjuracao * 2);
+		extremo = this.actor.system.secundarios.conjuracao / 5;
+		dificil = this.actor.system.secundarios.conjuracao / 2;
+		normal = this.actor.system.secundarios.conjuracao;
+		facil = this.actor.system.secundarios.conjuracao * 2;
 						
 		this.displayRoll(roll, label, true, [extremo, dificil, normal, facil], [
 				"<div>QUE MAGIA LINDA!</div>",
