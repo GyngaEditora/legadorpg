@@ -233,10 +233,10 @@ export class LegadoRPGActorSheet extends ActorSheet {
 		
 		let label = "<div>Defendendo!</div>";
 
-		extremo = this.actor.system.secundarios.defesa / 5;
-		dificil = this.actor.system.secundarios.defesa / 2;
-		normal = this.actor.system.secundarios.defesa;
-		facil = this.actor.system.secundarios.defesa * 2;
+		let extremo = this.actor.system.secundarios.defesa / 5;
+		let dificil = this.actor.system.secundarios.defesa / 2;
+		let normal = this.actor.system.secundarios.defesa;
+		let facil = this.actor.system.secundarios.defesa * 2;
 						
 		this.displayRoll(roll,label, true, [extremo, dificil, normal, facil], [
 				"<div>DEFESA ÉÉÉÉÉÉÉPICAAAA! (def /5)</div>",
