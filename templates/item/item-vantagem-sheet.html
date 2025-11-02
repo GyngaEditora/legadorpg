@@ -42,22 +42,13 @@
 					<tr>
 						<td>Custo</td>
 						<td>
-							<input name="system.custo" type="number" value="{{item.system.custo}}" />
+							<input name="system.custo" type="text" value="{{item.system.custo}}" />
 						</td>
 					</tr>
 					<tr>
 						<td>Casta</td>
 						<td>
-							<select name="system.casta">
-								{{#select item.system.casta}}
-									<option value="cacador">Caçador</option>
-									<option value="gladius">Gladius</option>
-									<option value="mago">Mago</option>
-									<option value="notivago">Notivago</option>
-									<option value="profeta">Profeta</option>
-									<option value="todas">Todas</option>
-								{{/select}}
-							</select>
+							<input name="system.casta" type="text" value="{{item.system.casta}}" />
 						</td>
 					</tr>
 				</table>
