@@ -69,9 +69,12 @@ export class LegadoRPGActor extends Actor {
 		
 		data.secundarios.vida = data.primarios.fisicos.constituicao.total + bonusA.vida + bonusC.vida;
 		data.secundarios.espirito_total = data.primarios.mentais.vontade.total + bonusA.espirito + bonusC.espirito;
-		data.secundarios.ataque = data.primarios.fisicos.destreza.normal + bonusC.ataque;
-		data.secundarios.defesa = data.primarios.fisicos.agilidade.normal + bonusC.defesa;
-		data.secundarios.conjuracao = data.primarios.mentais.astucia.normal + bonusC.conjuracao;
+		data.secundarios.ataque.base = data.primarios.fisicos.destreza.normal + bonusC.ataque;
+		data.secundarios.ataque.total = data.secundarios.ataque.base + data.secundarios.ataque.mod;
+		data.secundarios.defesa.base = data.primarios.fisicos.agilidade.normal + bonusC.defesa;
+		data.secundarios.defesa.total = data.secundarios.defesa.base + data.secundarios.defesa.mod;
+		data.secundarios.conjuracao.base = data.primarios.mentais.astucia.normal + bonusC.conjuracao;
+		data.secundarios.conjuracao.total = data.secundarios.conjuracao.base + data.secundarios.conjuracao.mod;
 		
 		//calcula pericias
 		for (let m in data.pericias){

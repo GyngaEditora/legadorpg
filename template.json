@@ -87,9 +87,21 @@
 				},
 				"secundarios": {
 					"dano": 0,
-					"ataque": 0,
-					"defesa": 0,
-					"conjuracao": 0,
+					"ataque": {
+						"base": 0,
+						"mod": 0,
+						"total": 0
+					},
+					"defesa": {
+						"base": 0,
+						"mod": 0,
+						"total": 0
+					},
+					"conjuracao": {
+						"base": 0,
+						"mod": 0,
+						"total": 0
+					},
 					"vida": 0,
 					"chama": 0,
 					"espirito_total": 0,
@@ -209,12 +221,12 @@
 					"resistencia": {
 						"valor": 0,
 						"bonus": 0,
-						"attr": "AGI"
+						"attr": "CON"
 					},
 					"sobrevivencia": {
 						"valor": 0,
 						"bonus": 0,
-						"attr": "AGI"
+						"attr": "VON"
 					}
 				}
 			}

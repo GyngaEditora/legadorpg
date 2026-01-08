@@ -73,8 +73,16 @@ export class LegadoRPGActorSheet extends ActorSheet {
       });
     }
   }
+  
 	async standardRoll(){
 		let roll = new Roll("1d100");
+		await roll.roll({"async": false});
+		
+		return roll;
+	}
+	
+	async customRoll(rollString){
+		let roll = new Roll(rollString);
 		await roll.roll({"async": false});
 		
 		return roll;
@@ -210,16 +218,18 @@ export class LegadoRPGActorSheet extends ActorSheet {
 		let roll = await this.standardRoll();
 
 		let label = "<div>Atacando!</div>";
+		
+		let value = this.actor.system.secundarios.ataque.total;
 
-		let extremo = this.actor.system.secundarios.ataque / 5;
-		let dificil = this.actor.system.secundarios.ataque / 2;
-		let normal = this.actor.system.secundarios.ataque;
-		let facil = this.actor.system.secundarios.ataque * 2;
+		let extremo = value / 5;
+		let dificil = value / 2;
+		let normal = value;
+		let facil = value * 2;
 						
 		this.displayRoll(roll,label, true, [extremo, dificil, normal, facil], [
-				"<div>QUE GOLPE LINDO!</div>",
-				"<div>Em Cheio!</div>",
-				"<div>Pegou!</div>",
+				"<div>QUE GOLPE LINDO!</div><div>Explosão do Extremo!!</div>",
+				"<div>Em Cheio!</div><div>Sucesso Difícil!</div>",
+				"<div>Pegou!</div><div>Sucesso Normal</div>",
 				"<div>NO VÁCUO!</div>",
 				"<div>NO VÁCUO!</div>"
 			]
@@ -232,16 +242,18 @@ export class LegadoRPGActorSheet extends ActorSheet {
 		let roll = await this.standardRoll();
 		
 		let label = "<div>Defendendo!</div>";
+		
+		let value = this.actor.system.secundarios.defesa.total;
 
-		let extremo = this.actor.system.secundarios.defesa / 5;
-		let dificil = this.actor.system.secundarios.defesa / 2;
-		let normal = this.actor.system.secundarios.defesa;
-		let facil = this.actor.system.secundarios.defesa * 2;
+		let extremo = value / 5;
+		let dificil = value / 2;
+		let normal = value;
+		let facil = value * 2;
 						
 		this.displayRoll(roll,label, true, [extremo, dificil, normal, facil], [
-				"<div>DEFESA ÉÉÉÉÉÉÉPICAAAA! (def /5)</div>",
-				"<div>BLOQUEIO PERFEITO! (def/2)</div>",
-				"<div>Boa Guarda! (def)</div>",
+				"<div>DEFESA ÉÉÉÉÉÉÉPICAAAA! (def /5)</div><div>Sucesso Extremo!!</div>",
+				"<div>BLOQUEIO PERFEITO! (def/2)</div><div>Sucesso Difícil!</div>",
+				"<div>Boa Guarda! (def)</div><div>Sucesso Normal</div>",
 				"<div>Tem falha nessa postura</div>",
 				"<div>Tem falha nessa postura</div>"
 			]
@@ -254,23 +266,25 @@ export class LegadoRPGActorSheet extends ActorSheet {
 		let roll = await this.standardRoll();
 		
 		let label = "<div>Conjurando!</div>";
+		
+		let value = this.actor.system.secundarios.conjuracao.total;
 
-		let extremo = this.actor.system.secundarios.conjuracao / 5;
-		let dificil = this.actor.system.secundarios.conjuracao / 2;
-		let normal = this.actor.system.secundarios.conjuracao;
-		let facil = this.actor.system.secundarios.conjuracao * 2;
+		let extremo = value / 5;
+		let dificil = value / 2;
+		let normal = value;
+		let facil = value * 2;
 						
 		this.displayRoll(roll, label, true, [extremo, dificil, normal, facil], [
-				"<div>QUE MAGIA LINDA!</div>",
-				"<div>Em Cheio!</div>",
-				"<div>Pegou!</div>",
+				"<div>QUE MAGIA LINDA!</div><div>Sucesso Extremo!!</div>",
+				"<div>Em Cheio!</div><div>Sucesso Difícil!</div>",
+				"<div>Pegou!</div><div>Sucesso Normal</div>",
 				"<div>NO VÁCUO!</div>",
 				"<div>NO VÁCUO!</div>"
 			]
 		);
 	}
   
-	_onRollItem(event) {
+	async _onRollItem(event) {
 		event.preventDefault();
 		const element = event.currentTarget;
 		const dataset = element.dataset;
@@ -279,8 +293,9 @@ export class LegadoRPGActorSheet extends ActorSheet {
 		
 		if(damage != null){
 			if(damage != ""){
-				let roll = new Roll(damage);
-				roll.roll({"async": false});
+				//let roll = new Roll(damage);
+				//roll.roll({"async": false});
+				let roll = await this.customRoll(damage);
 				let label = "<div>Dano de " + source + "</div>";
 				
 				roll.toMessage({

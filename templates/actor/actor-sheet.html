@@ -68,11 +68,29 @@
 				<td class="rollable roll-cast">Conjuração</td>
 			</tr>
 			<tr>
-				<td>{{actor.system.secundarios.ataque}}</td>
+				<td>
+					{{actor.system.secundarios.ataque.base}}
+					+
+					<input style="width: 30px;" name="system.secundarios.ataque.mod" type="number" value="{{actor.system.secundarios.ataque.mod}}" />
+					=
+					{{actor.system.secundarios.ataque.total}}
+				</td>
 				<td></td>
-				<td>{{actor.system.secundarios.defesa}}</td>
+				<td>
+					{{actor.system.secundarios.defesa.base}}
+					+
+					<input style="width: 30px;" name="system.secundarios.defesa.mod" type="number" value="{{actor.system.secundarios.defesa.mod}}" />
+					=
+					{{actor.system.secundarios.defesa.total}}
+				</td>
 				<td></td>
-				<td>{{actor.system.secundarios.conjuracao}}</td>
+				<td>
+					{{actor.system.secundarios.conjuracao.base}}
+					+
+					<input style="width: 30px;" name="system.secundarios.conjuracao.mod" type="number" value="{{actor.system.secundarios.conjuracao.mod}}" />
+					=
+					{{actor.system.secundarios.conjuracao.total}}</td>{{actor.system.secundarios.conjuracao.base}}
+				</td>
 			</tr>
 		</table>
 		<table>
